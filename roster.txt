@@ -1,0 +1,65 @@
+# Please be careful with the formatting of the file ;)
+
+# Who's who
+cmd = "Charles Moulliard" <cmoullia@redhat.com>
+kcr = "Kevin Conner" <kconner@redhat.com>
+kps = "Kenny Peeples" <kpeeples@redhat.com>
+mes = "Markus Eisele" <meisele@redhat.com>
+mle = "Mark Little" <mlittle@redhat.com>
+rpe = "Romain Pelisse" <rpelisse@redhat.com>
+dmr = "David Mair" <dmair@redhat.com>
+
+# Week Roster 2015
+01 kps
+02 kps
+03 mes
+04 rpe
+05 kcr
+06 cmd
+07 dmr
+08 mle
+09 mes
+10 kcr
+11 rpe
+12 cmd
+13 dmr
+14 kps
+15 mle
+16 mes
+17 kcr
+18 rpe
+19 cmd
+20 dmr
+21 kps
+22 mes
+23 kcr
+24 rpe
+25 cmd
+26 dmr
+27 mle
+28 mes
+29 kcr
+30 rpe
+31 cmd
+32 dmr
+33 mes
+34 kcr
+35 rpe
+36 rpe
+37 kps
+38 mes
+39 kcr
+40 rpe
+41 cmd
+42 kps
+43 mes
+44 kcr
+45 rpe
+46 cmd
+47 kps
+48 mes
+49 kcr
+50 rpe
+51 cmd
+52 mle
+53 mes
