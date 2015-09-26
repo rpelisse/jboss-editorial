@@ -7,12 +7,19 @@
 */
 import java.text.SimpleDateFormat
 import java.io.FileOutputStream
-
-import org.jboss.weekly.SMTPClient;
+import java.io.File
 
 import com.beust.jcommander.JCommander
 import com.beust.jcommander.Parameter
 import com.beust.jcommander.ParameterException
+
+import javax.mail.{ Session, Transport }
+import java.util.Properties
+import javax.mail.Message.RecipientType
+import javax.mail.Message
+import javax.mail.internet.{ InternetAddress, MimeMessage }
+import java.util.Arrays
+import java.io.FileInputStream
 
 import net.fortuna.ical4j.data._
 import net.fortuna.ical4j.model.Calendar
@@ -24,6 +31,8 @@ import net.fortuna.ical4j.model.property.Version
 import net.fortuna.ical4j.model.property.Uid
 import net.fortuna.ical4j.model.parameter.Value
 import net.fortuna.ical4j.model.Property
+
+import akka.actor.{ActorSystem, ActorLogging, Actor, Props}
 
 object Args {
   @Parameter(names = Array("-f", "--roster-file"), description = "Path to the roster file", required = true)
@@ -37,16 +46,53 @@ object Args {
 
   @Parameter(names = Array("-p", "--smtp-port"), description = "Port to use of SMTP server used to send reminder", required = false)
   var smtpPort = ""
+
+  @Parameter(names = Array("-d", "--stale-emails-dir"), description = "Directory holding staled emails", required = false)
+  var staleEmailsDir:String = null
 }
 
 new JCommander(Args, args.toArray: _*)
 
 // Main starts here
+if ( Args.staleEmailsDir != null )
+  resendStaleEmails(Args.staleEmailsDir)
+
 if ( Args.iCalFile != null )
   generateICalFile(Args.iCalFile, Args.rosterFile)
 else
   sendReminderIfNeeded()
 // Main ends here
+
+
+case class Wrapper(file: File)
+class MailSenderActor extends Actor with ActorLogging {
+  def receive = {
+    case Wrapper(file) => {
+      log.info("Reading stale email from:" + file.getName())
+      val message = readAndBuildMails(file)
+      log.info("Deleting file" + file.getName())
+      file.delete()
+      log.info("Resending email" + message.getMessageID())
+      sendMimeMessage(message)
+    }
+    case _ => {
+      log.error("Unsupported type")
+    }
+  }
+}
+
+def resendStaleEmails(staleMailFolder:String) = {
+  val mails = new File(staleMailFolder).listFiles.filter(_.isFile).toList
+  val system = ActorSystem("StaleEmailSenders")
+
+  for ( i <- 0 until mails.length )
+    system.actorOf(Props(new MailSenderActor), mails(i).getName()) ! Wrapper(mails(i))
+  system.shutdown
+}
+
+def readAndBuildMails(mail:File) = {
+  new MimeMessage(Session.getDefaultInstance(new Properties(), null), new FileInputStream(mail))
+}
 
 def createEvent(weekNo:Int, dayOfTheWeekId: Int, eventDesc: String) = {
     val entryWeek = java.util.Calendar.getInstance()
@@ -77,7 +123,6 @@ def generateICalFile(iCalFile: String, rosterFile: String) = {
     calendar.getComponents().add(createEvent(weekNo, java.util.Calendar.MONDAY, "JBoss Weekly Editorial - Week " + weekNo + " (early week reminder) - " + author))
     calendar.getComponents().add(createEvent(weekNo, java.util.Calendar.THURSDAY, "JBoss Weekly Editorial - Week " + weekNo + " (release date)" + author))
   }
-  //println(calendar)
   new CalendarOutputter().output(calendar, new FileOutputStream(iCalFile))
   calendar
 }
@@ -96,14 +141,55 @@ def loadAuthors(rosterFile: String) = {
 
 def sendReminderIfNeeded() = { //roster:String, smtpHostname:String, smtpPort:String) = {
   java.util.Calendar.getInstance().getTime().getDay match {
-    case 4 => sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the weekly by the end of the day.")
-    case 1 => sendReminder("Hi,\n\nIt's Monday and this week you are in charge of the JBoss Weekly Editorial. Don't forget about it !")
+    case 4 => sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.")
+    case 1 => sendReminder("Hi,\n\nIt's Monday and, this week, you are in charge of the JBoss Weekly Editorial. Don't forget about it !")
     case _ => println("Nothing to do.")
   }
 }
 
 def parseRosterFile(rosterFile:String) = {
   io.Source.fromFile(rosterFile).getLines.toList
+}
+
+def sendMimeMessage(message: MimeMessage) {
+  smtpProps
+
+  try {
+    Transport.send(message)
+  } catch { case t: Throwable => {
+    println("Failed to send email:" + t.getMessage())
+    saveToSendLater(message)
+    }
+  }
+}
+
+def smtpProps() = {
+  val smtpProperties = new Properties()
+  smtpProperties.put("mail.smtp.port", Args.smtpPort)
+  smtpProperties.put("mail.smtp.host", Args.smtpHostname)
+  smtpProperties
+}
+
+
+def sendEMail(from:String, to:String, subject:String, text:String) {
+
+  val session = Session.getDefaultInstance(smtpProps())
+  val message = new MimeMessage(session)
+
+  message.setFrom(new InternetAddress(from))
+  message.addRecipient(RecipientType.TO, new InternetAddress(to))
+  message.setSubject(subject)
+  message.setText(text)
+
+  sendMimeMessage(message)
+}
+
+def saveToSendLater(message: MimeMessage) = {
+  import java.io.FileOutputStream
+  import java.io.File
+
+  val mailFilename = message.getMessageID().replaceAll("<","").replaceAll(">","").replaceAll("@","-at-")
+  message.writeTo(new FileOutputStream(new File(Args.staleEmailsDir + "/" + mailFilename)))
 }
 
 def sendReminder(message:String) = {
@@ -121,5 +207,5 @@ def sendReminder(message:String) = {
   val authorId = entries.filter( entry => entry._1.equals(weekNo.toString) ).head._2
   val author = authors.filter ( author => author._1.equals(authorId) ).head._2
   println("Sending a reminder to:" + author + ", from "  + EDITORIAL_TEAM_MAIL + ", with message:\n" + message)
-  new SMTPClient(Args.smtpHostname, Args.smtpPort).sendEmail(author, EDITORIAL_TEAM_MAIL , "JBoss Weekly Editorial Reminder", message)
+  sendEMail(EDITORIAL_TEAM_MAIL, author,  "JBoss Weekly Editorial Reminder", message)
 }
