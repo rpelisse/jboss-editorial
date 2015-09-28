@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-readonly ROSTER_VERSION=${ROSTER_VERSION:-'0.1-SNAPSHOT'}
+readonly ROSTER_VERSION=${ROSTER_VERSION:-'0.2-SNAPSHOT'}
 readonly ROSTER=${ROSTER:-"${HOME}/.m2/repository/org/jboss/weekly/roster/${ROSTER_VERSION}/roster-${ROSTER_VERSION}.jar"}
 readonly SCRIPT=${1}
 shift
