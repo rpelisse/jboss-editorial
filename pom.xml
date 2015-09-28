@@ -4,7 +4,7 @@
 
   <groupId>org.jboss.weekly</groupId>
   <artifactId>roster</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>WeeklyEditorialRosterApp</name>
   <description>A simple tool to generate the roster calendar and send some friendly reminder to the current week author</description>
