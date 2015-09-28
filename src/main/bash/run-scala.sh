@@ -16,4 +16,4 @@ if [ ! -e "${SCRIPT}" ]; then
   exit 2
 fi
 
-scala  -classpath ".:${ROSTER}" "${SCRIPT}" ${@}
+scala  -classpath "${ROSTER}" "${SCRIPT}" ${@}
