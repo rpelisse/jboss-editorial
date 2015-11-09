@@ -3,5 +3,5 @@
 dependency-reduced-pom.xml
 target/
 jboss-weekly-editorial.ics
-jboss-weekly-reminder-cronjob.sh
+jboss-weekly-*.sh
 
