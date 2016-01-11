@@ -7,41 +7,40 @@ kps = "Kenny Peeples" <kpeeples@shadow-soft.com>
 mes = "Markus Eisele" <meisele@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
 rpe = "Romain Pelisse" <rpelisse@redhat.com>
-dmr = "David Mair" <dmair@redhat.com>
 
-# Week Roster 2015
-01 kps
+# Week Roster 2016
+01 mes
 02 kps
 03 mes
 04 rpe
 05 kcr
 06 cmd
-07 dmr
+07 kpe
 08 mle
 09 mes
 10 kcr
 11 rpe
 12 cmd
-13 dmr
+13 kcr
 14 kps
 15 mle
 16 mes
 17 kcr
 18 rpe
 19 cmd
-20 dmr
+20 mle
 21 kps
 22 mes
 23 kcr
 24 rpe
 25 cmd
-26 dmr
+26 kpe
 27 mle
 28 mes
 29 kcr
 30 rpe
 31 cmd
-32 dmr
+32 mle
 33 mes
 34 kcr
 35 rpe
