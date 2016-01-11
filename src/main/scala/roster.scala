@@ -33,6 +33,7 @@ import net.fortuna.ical4j.model.parameter.Value
 import net.fortuna.ical4j.model.Property
 
 import akka.actor.{ActorSystem, ActorLogging, Actor, Props}
+import scala.concurrent.duration.Duration
 
 object Args {
   @Parameter(names = Array("-f", "--roster-file"), description = "Path to the roster file", required = true)
@@ -49,13 +50,18 @@ object Args {
 
   @Parameter(names = Array("-d", "--stale-emails-dir"), description = "Directory holding staled emails", required = false)
   var staleEmailsDir:String = null
+
+  @Parameter(names = Array("-s", "--only-resend--stale-emails"), description = "Only resend any staled emails", required = false)
+  var resendStalledEmail = false
 }
 
 new JCommander(Args, args.toArray: _*)
-
 // Main starts here
-if ( Args.staleEmailsDir != null )
+if ( Args.resendStalledEmail && Args.staleEmailsDir != null && ! "".equals(Args.staleEmailsDir) ) {
+  println("Resending any stalled emails...")
   resendStaleEmails(Args.staleEmailsDir)
+  System.exit(0)
+}
 
 if ( Args.iCalFile != null )
   generateICalFile(Args.iCalFile, Args.rosterFile)
@@ -68,30 +74,36 @@ case class Wrapper(file: File)
 class MailSenderActor extends Actor with ActorLogging {
   def receive = {
     case Wrapper(file) => {
-      log.info("Reading stale email from:" + file.getName())
-      val message = readAndBuildMails(file)
-      log.info("Deleting file" + file.getName())
-      file.delete()
-      log.info("Resending email" + message.getMessageID())
-      sendMimeMessage(message)
+      println("Reading stalled email from:" + file.getName())
+      try {
+        val message = readAndBuildMails(file)
+        println("Deleting file" + file.getName())
+        file.delete()
+        println("Resending email" + message.getMessageID())
+        sendMimeMessage(message)
+      } catch { case e:Throwable => println(e.getMessage())
+      }
     }
     case _ => {
       log.error("Unsupported type")
     }
+    println("finished")
+    context.stop(self)
   }
 }
 
 def resendStaleEmails(staleMailFolder:String) = {
   val mails = new File(staleMailFolder).listFiles.filter(_.isFile).toList
-  val system = ActorSystem("StaleEmailSenders")
-
-  for ( i <- 0 until mails.length )
-    system.actorOf(Props(new MailSenderActor), mails(i).getName()) ! Wrapper(mails(i))
-  system.shutdown
+  if ( mails.length > 0 ) {
+    val system = ActorSystem("StaleEmailSenders")
+    for ( i <- 0 until mails.length )  system.actorOf(Props(new MailSenderActor), mails(i).getName()) ! Wrapper(mails(i))
+    system.awaitTermination(Duration(60, "seconds"))
+    system.shutdown
+  }
 }
 
 def readAndBuildMails(mail:File) = {
-  new MimeMessage(Session.getDefaultInstance(new Properties(), null), new FileInputStream(mail))
+  new MimeMessage(Session.getDefaultInstance(smtpProps(), null), new FileInputStream(mail))
 }
 
 def createEvent(weekNo:Int, dayOfTheWeekId: Int, eventDesc: String) = {
@@ -152,8 +164,6 @@ def parseRosterFile(rosterFile:String) = {
 }
 
 def sendMimeMessage(message: MimeMessage) {
-  smtpProps
-
   try {
     Transport.send(message)
   } catch { case t: Throwable => {
@@ -165,6 +175,7 @@ def sendMimeMessage(message: MimeMessage) {
 
 def smtpProps() = {
   val smtpProperties = new Properties()
+  println("SMTP:" + Args.smtpHostname + ":" + Args.smtpPort)
   smtpProperties.put("mail.smtp.port", Args.smtpPort)
   smtpProperties.put("mail.smtp.host", Args.smtpHostname)
   smtpProperties
@@ -175,9 +186,11 @@ def sendEMail(from:String, to:String, subject:String, text:String) {
 
   val session = Session.getDefaultInstance(smtpProps())
   val message = new MimeMessage(session)
+  val me = "Romain Pelisse <romain@redhat.com>"
 
   message.setFrom(new InternetAddress(from))
   message.addRecipient(RecipientType.TO, new InternetAddress(to))
+  message.addRecipient(RecipientType.TO, new InternetAddress(me))
   message.setSubject(subject)
   message.setText(text)
 
