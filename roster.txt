@@ -15,7 +15,7 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 04 rpe
 05 kcr
 06 cmd
-07 kpe
+07 kps
 08 mle
 09 mes
 10 kcr
@@ -34,7 +34,7 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 23 kcr
 24 rpe
 25 cmd
-26 kpe
+26 kps
 27 mle
 28 mes
 29 kcr
