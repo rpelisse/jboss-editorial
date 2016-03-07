@@ -4,61 +4,62 @@
 cmd = "Charles Moulliard" <cmoullia@redhat.com>
 kcr = "Kevin Conner" <kconner@redhat.com>
 kps = "Kenny Peeples" <kpeeples@shadow-soft.com>
-mes = "Markus Eisele" <meisele@redhat.com>
+prn = "Paul Robinson" <probinso@redhat.com>
+jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
 rpe = "Romain Pelisse" <rpelisse@redhat.com>
 
 # Week Roster 2016
-01 mes
+01 prn
 02 kps
-03 mes
+03 kcr
 04 rpe
-05 kcr
+05 jpr
 06 cmd
 07 kps
 08 mle
-09 mes
-10 kcr
+09 prn
+10 jpr
 11 rpe
 12 cmd
 13 kcr
 14 kps
 15 mle
-16 mes
-17 kcr
-18 rpe
+16 prn
+17 jpr
+18 kcr
 19 cmd
-20 mle
+20 jpr
 21 kps
-22 mes
+22 prn
 23 kcr
 24 rpe
 25 cmd
 26 kps
 27 mle
-28 mes
+28 prn
 29 kcr
 30 rpe
 31 cmd
 32 mle
-33 mes
+33 jpr
 34 kcr
 35 rpe
-36 rpe
+36 jpr
 37 kps
-38 mes
-39 kcr
+38 prn
+39 jpr
 40 rpe
 41 cmd
-42 kps
+42 rpe
 43 kcr
-44 kcr
+44 mle
 45 rpe
 46 cmd
 47 kps
-48 mes
+48 prn
 49 kcr
-50 rpe
+50 jpr
 51 cmd
 52 mle
-53 mes
+53 prn
