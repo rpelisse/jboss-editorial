@@ -38,8 +38,8 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 26 kps
 27 mle
 28 prn
-29 kcr
-30 rpe
+29 rpe
+30 kcr
 31 cmd
 32 mle
 33 jpr
