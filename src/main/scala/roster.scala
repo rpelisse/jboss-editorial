@@ -184,21 +184,18 @@ def sendMimeMessage(message: MimeMessage) {
 
 def smtpProps() = {
   val smtpProperties = new Properties()
-  println("SMTP:" + Args.smtpHostname + ":" + Args.smtpPort)
   smtpProperties.put("mail.smtp.port", Args.smtpPort)
   smtpProperties.put("mail.smtp.host", Args.smtpHostname)
-	smtpProperties.put("mail.transport.protocol", "smtp");
-	smtpProperties.put("mail.smtp.starttls.enable", "true");
-	smtpProperties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
-	smtpProperties.put("mail.smtp.auth", "true");
-	smtpProperties.put("mail.smtp.host", Args.smtpHostname);
-	smtpProperties.put("mail.smtp.port", Args.smtpPort);
-	smtpProperties.put("mail.smtp.timeout", "10000");
-	smtpProperties.put("mail.smtp.ssl.checkserveridentity", "false");
-	smtpProperties.put("mail.smtp.ssl.trust", "*");
-	smtpProperties.put("mail.smtp.connectiontimeout", "10000");
-  smtpProperties.put("mail.smtp.debug", "true");
-	smtpProperties.put("mail.smtp.socketFactory.fallback", "false");
+  smtpProperties.put("mail.transport.protocol", "smtp")
+  smtpProperties.put("mail.smtp.starttls.enable", "true")
+  smtpProperties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory")
+  smtpProperties.put("mail.smtp.auth", "true")
+  smtpProperties.put("mail.smtp.timeout", "10000")
+  smtpProperties.put("mail.smtp.ssl.checkserveridentity", "false")
+  smtpProperties.put("mail.smtp.ssl.trust", "*")
+  smtpProperties.put("mail.smtp.connectiontimeout", "10000")
+  smtpProperties.put("mail.smtp.debug", "false")
+  smtpProperties.put("mail.smtp.socketFactory.fallback", "false")
   smtpProperties
 }
 
