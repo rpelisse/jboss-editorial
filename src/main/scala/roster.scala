@@ -94,6 +94,7 @@ class MailSenderActor extends Actor with ActorLogging {
 
 def resendStaleEmails(staleMailFolder:String) = {
   val mails = new File(staleMailFolder).listFiles.filter(_.isFile).toList
+  println("Resending " + mails.length + " email(s).")
   if ( mails.length > 0 ) {
     val system = ActorSystem("StaleEmailSenders")
     for ( i <- 0 until mails.length )  system.actorOf(Props(new MailSenderActor), mails(i).getName()) ! Wrapper(mails(i))
