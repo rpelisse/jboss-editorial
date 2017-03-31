@@ -17,6 +17,8 @@ import javax.mail.{ Session, Transport }
 import java.util.Properties
 import javax.mail.Message.RecipientType
 import javax.mail.Message
+import javax.mail.Session
+import javax.mail.PasswordAuthentication
 import javax.mail.internet.{ InternetAddress, MimeMessage }
 import java.util.Arrays
 import java.io.FileInputStream
@@ -47,6 +49,12 @@ object Args {
 
   @Parameter(names = Array("-p", "--smtp-port"), description = "Port to use of SMTP server used to send reminder", required = false)
   var smtpPort = ""
+
+  @Parameter(names = Array("-U", "--stmp-username"), description = "Username for SMTP authentification", required = false)
+  val smtpUsername = ""
+
+  @Parameter(names = Array("-P", "--stmp-password"), description = "Password for SMTP authentification", required = false)
+  val smtpPassword = ""
 
   @Parameter(names = Array("-d", "--stale-emails-dir"), description = "Directory holding staled emails", required = false)
   var staleEmailsDir:String = null
@@ -154,7 +162,7 @@ def loadAuthors(rosterFile: String) = {
 
 def sendReminderIfNeeded() = { //roster:String, smtpHostname:String, smtpPort:String) = {
   java.util.Calendar.getInstance().getTime().getDay match {
-    case 4 => sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.")
+    case 5 => sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.")
     case 1 => sendReminder("Hi,\n\nIt's Monday and, this week, you are in charge of the JBoss Weekly Editorial. Don't forget about it !")
     case _ => println("Nothing to do.")
   }
@@ -179,13 +187,31 @@ def smtpProps() = {
   println("SMTP:" + Args.smtpHostname + ":" + Args.smtpPort)
   smtpProperties.put("mail.smtp.port", Args.smtpPort)
   smtpProperties.put("mail.smtp.host", Args.smtpHostname)
+	smtpProperties.put("mail.transport.protocol", "smtp");
+	smtpProperties.put("mail.smtp.starttls.enable", "true");
+	smtpProperties.put("mail.smtp.socketFactory.class","javax.net.ssl.SSLSocketFactory");
+	smtpProperties.put("mail.smtp.auth", "true");
+	smtpProperties.put("mail.smtp.host", Args.smtpHostname);
+	smtpProperties.put("mail.smtp.port", Args.smtpPort);
+	smtpProperties.put("mail.smtp.timeout", "10000");
+	smtpProperties.put("mail.smtp.ssl.checkserveridentity", "false");
+	smtpProperties.put("mail.smtp.ssl.trust", "*");
+	smtpProperties.put("mail.smtp.connectiontimeout", "10000");
+  smtpProperties.put("mail.smtp.debug", "true");
+	smtpProperties.put("mail.smtp.socketFactory.fallback", "false");
   smtpProperties
 }
 
+def getSmtpSession(smtpProperties: Properties) = {
+  Session.getInstance(smtpProps, new javax.mail.Authenticator() {
+   override def getPasswordAuthentication() = { new PasswordAuthentication(Args.smtpUsername, Args.smtpPassword) }
+  }
+  )
+}
 
 def sendEMail(from:String, to:String, subject:String, text:String) {
 
-  val session = Session.getDefaultInstance(smtpProps())
+  val session = getSmtpSession(smtpProps())
   val message = new MimeMessage(session)
   val me = "Romain Pelisse <romain@redhat.com>"
 
