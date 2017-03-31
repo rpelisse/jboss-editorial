@@ -4,3 +4,5 @@ dependency-reduced-pom.xml
 target/
 jboss-weekly-*.sh
 *.ics
+dummy-staled-email
+stale-emails/
