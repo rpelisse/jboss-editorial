@@ -1,8 +1,6 @@
 #!/bin/bash
 
-
-readonly ROSTER_VERSION=${ROSTER_VERSION:-'0.2'}
-readonly ROSTER=${ROSTER:-"${HOME}/.m2/repository/org/jboss/weekly/roster/${ROSTER_VERSION}/roster-${ROSTER_VERSION}.jar"}
+readonly CLASSPATH=${CLASSPATH}
 readonly SCRIPT=${1}
 shift
 
@@ -16,4 +14,9 @@ if [ ! -e "${SCRIPT}" ]; then
   exit 2
 fi
 
-scala  -classpath "${ROSTER}" "${SCRIPT}" ${@}
+if [ -z "${CLASSPATH}" ]; then
+  echo "CLASSPATH undefined."
+  exit 3
+fi
+
+scala -nocompdaemon -classpath "${CLASSPATH}" "${SCRIPT}" ${@}
