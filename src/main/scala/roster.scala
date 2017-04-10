@@ -36,6 +36,7 @@ import net.fortuna.ical4j.model.Property
 
 import akka.actor.{ActorSystem, ActorLogging, Actor, Props}
 import scala.concurrent.duration.Duration
+import scala.io.Source
 
 object Args {
   @Parameter(names = Array("-f", "--roster-file"), description = "Path to the roster file", required = true)
@@ -169,7 +170,7 @@ def sendReminderIfNeeded() = { //roster:String, smtpHostname:String, smtpPort:St
 }
 
 def parseRosterFile(rosterFile:String) = {
-  io.Source.fromFile(rosterFile).getLines.toList
+  Source.fromFile(rosterFile).getLines.toList
 }
 
 def sendMimeMessage(message: MimeMessage) {
