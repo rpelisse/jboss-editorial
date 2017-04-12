@@ -165,7 +165,7 @@ def sendReminderIfNeeded() = { //roster:String, smtpHostname:String, smtpPort:St
   java.util.Calendar.getInstance().getTime().getDay match {
     case 4 => sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.")
     case 1 => sendReminder("Hi,\n\nIt's Monday and, this week, you are in charge of the JBoss Weekly Editorial. Don't forget about it !")
-    case _ => println("Nothing to do.")
+    case _ => println("No reminders to be sent today.")
   }
 }
 
