@@ -41,17 +41,22 @@ import java.util.Properties
 import collection.JavaConverters._
 
 object Args {
+  // Feature command
   @Parameter(names = Array("-f", "--roster-file"), description = "Path to the roster file", required = true)
   var rosterFile: String = ""
 
   @Parameter(names = Array("-c", "--generate-ical-file"), description = "Generate an ical file based on roster file", required = false)
   var iCalFile: String = null
 
+  @Parameter(names = Array("-T", "--send-test-email"), description = "Generate an ical file based on roster file", required = false)
+  var testEmail: String = null
+
+  // Configuration paramaters
   @Parameter(names = Array("-h", "--smtp-hostname"), description = "Hostname of SMTP server used to send reminder", required = false)
   var smtpHostname = ""
 
   @Parameter(names = Array("-p", "--smtp-port"), description = "Port to use of SMTP server used to send reminder", required = false)
-  var smtpPort = ""
+  var smtpPort = "465"
 
   @Parameter(names = Array("-U", "--stmp-username"), description = "Username for SMTP authentification", required = false)
   val smtpUsername = ""
@@ -66,6 +71,8 @@ object Args {
   var resendStalledEmail = false
 }
 
+// Main program
+
 // Extracting Parameter from Propery - as the mvn scala plugin does not support passing args to
 // script apparently
 var args = Seq[String]()
@@ -76,7 +83,6 @@ for ( (k,v) <- properties )
     args = args:+(v)
   }
 new JCommander(Args, args.toArray: _*)
-// Main starts here
 if ( Args.resendStalledEmail && Args.staleEmailsDir != null && ! "".equals(Args.staleEmailsDir) ) {
   println("Resending any stalled emails...")
   resendStaleEmails(Args.staleEmailsDir)
@@ -86,7 +92,7 @@ if ( Args.resendStalledEmail && Args.staleEmailsDir != null && ! "".equals(Args.
 if ( Args.iCalFile != null )
   generateICalFile(Args.iCalFile, Args.rosterFile)
 else
-  sendReminderIfNeeded()
+  if ( Args.testEmail != null) sendTestEmail() else sendReminderIfNeeded()
 // Main ends here
 
 
@@ -111,6 +117,8 @@ class MailSenderActor extends Actor with ActorLogging {
     context.stop(self)
   }
 }
+
+def sendTestEmail(user: String = "belaran@redhat.com") = sendEMail(user, user, "Test Email from Roster App", "Test successful - if you are reading this.")
 
 def resendStaleEmails(staleMailFolder:String) = {
   val mails = new File(staleMailFolder).listFiles.filter(_.isFile).toList
