@@ -77,13 +77,14 @@ for ( (k,v) <- properties )
     args = args:+(v)
   }
 new JCommander(Args, args.toArray: _*)
+
+if ( Args.testEmail != null) sendTestEmail()
+
 if ( Args.iCalFile != null )
   generateICalFile(Args.iCalFile, Args.rosterFile)
 else
-  if ( Args.testEmail != null) sendTestEmail() else sendReminderIfNeeded()
+  sendReminderIfNeeded()
 // Main ends here
-
-def sendTestEmail(user: String = "belaran@redhat.com") = sendEMail(user, user, "Test Email from Roster App", "Test successful - if you are reading this.")
 
 def createEvent(weekNo:Int, dayOfTheWeekId: Int, eventDesc: String) = {
     val entryWeek = java.util.Calendar.getInstance()
@@ -140,6 +141,11 @@ def sendReminderIfNeeded() = { //roster:String, smtpHostname:String, smtpPort:St
 
 def parseRosterFile(rosterFile:String) = {
   Source.fromFile(rosterFile).getLines.toList
+}
+
+def sendTestEmail(user: String = "belaran@redhat.com") = {
+  sendEMail(user, user, "Test Email from Roster App", "Test successful - if you are reading this.")
+  System.exit(0)
 }
 
 def sendMimeMessage(message: MimeMessage) {
