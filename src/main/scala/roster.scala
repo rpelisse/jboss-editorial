@@ -63,12 +63,6 @@ object Args {
 
   @Parameter(names = Array("-P", "--stmp-password"), description = "Password for SMTP authentification", required = false)
   val smtpPassword = ""
-
-  @Parameter(names = Array("-d", "--stale-emails-dir"), description = "Directory holding staled emails", required = false)
-  var staleEmailsDir:String = null
-
-  @Parameter(names = Array("-s", "--only-resend--stale-emails"), description = "Only resend any staled emails", required = false)
-  var resendStalledEmail = false
 }
 
 // Main program
@@ -83,57 +77,13 @@ for ( (k,v) <- properties )
     args = args:+(v)
   }
 new JCommander(Args, args.toArray: _*)
-if ( Args.resendStalledEmail && Args.staleEmailsDir != null && ! "".equals(Args.staleEmailsDir) ) {
-  println("Resending any stalled emails...")
-  resendStaleEmails(Args.staleEmailsDir)
-  System.exit(0)
-}
-
 if ( Args.iCalFile != null )
   generateICalFile(Args.iCalFile, Args.rosterFile)
 else
   if ( Args.testEmail != null) sendTestEmail() else sendReminderIfNeeded()
 // Main ends here
 
-
-case class Wrapper(file: File)
-class MailSenderActor extends Actor with ActorLogging {
-  def receive = {
-    case Wrapper(file) => {
-      println("Reading stalled email from:" + file.getName())
-      try {
-        val message = readAndBuildMails(file)
-        println("Deleting file" + file.getName())
-        file.delete()
-        println("Resending email" + message.getMessageID())
-        sendMimeMessage(message)
-      } catch { case e:Throwable => println(e.getMessage())
-      }
-    }
-    case _ => {
-      log.error("Unsupported type")
-    }
-    println("finished")
-    context.stop(self)
-  }
-}
-
 def sendTestEmail(user: String = "belaran@redhat.com") = sendEMail(user, user, "Test Email from Roster App", "Test successful - if you are reading this.")
-
-def resendStaleEmails(staleMailFolder:String) = {
-  val mails = new File(staleMailFolder).listFiles.filter(_.isFile).toList
-  println("Resending " + mails.length + " email(s).")
-  if ( mails.length > 0 ) {
-    val system = ActorSystem("StaleEmailSenders")
-    for ( i <- 0 until mails.length )  system.actorOf(Props(new MailSenderActor), mails(i).getName()) ! Wrapper(mails(i))
-    system.awaitTermination(Duration(60, "seconds"))
-    system.shutdown
-  }
-}
-
-def readAndBuildMails(mail:File) = {
-  new MimeMessage(Session.getDefaultInstance(smtpProps(), null), new FileInputStream(mail))
-}
 
 def createEvent(weekNo:Int, dayOfTheWeekId: Int, eventDesc: String) = {
     val entryWeek = java.util.Calendar.getInstance()
@@ -195,10 +145,7 @@ def parseRosterFile(rosterFile:String) = {
 def sendMimeMessage(message: MimeMessage) {
   try {
     Transport.send(message)
-  } catch { case t: Throwable => {
-    println("Failed to send email:" + t.getMessage())
-    saveToSendLater(message)
-    }
+  } catch { case t: Throwable => println("Failed to send email:" + t.getMessage())
   }
 }
 
@@ -220,10 +167,7 @@ def smtpProps() = {
 }
 
 def getSmtpSession(smtpProperties: Properties) = {
-  Session.getInstance(smtpProps, new javax.mail.Authenticator() {
-   override def getPasswordAuthentication() = { new PasswordAuthentication(Args.smtpUsername, Args.smtpPassword) }
-  }
-  )
+  Session.getInstance(smtpProps, new javax.mail.Authenticator() {  override def getPasswordAuthentication() = { new PasswordAuthentication(Args.smtpUsername, Args.smtpPassword) } } )
 }
 
 def sendEMail(from:String, to:String, subject:String, text:String) {
@@ -239,14 +183,6 @@ def sendEMail(from:String, to:String, subject:String, text:String) {
   message.setText(text)
 
   sendMimeMessage(message)
-}
-
-def saveToSendLater(message: MimeMessage) = {
-  import java.io.FileOutputStream
-  import java.io.File
-
-  val mailFilename = message.getMessageID().replaceAll("<","").replaceAll(">","").replaceAll("@","-at-")
-  message.writeTo(new FileOutputStream(new File(Args.staleEmailsDir + "/" + mailFilename)))
 }
 
 def sendReminder(message:String) = {
