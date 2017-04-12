@@ -37,6 +37,8 @@ import net.fortuna.ical4j.model.Property
 import akka.actor.{ActorSystem, ActorLogging, Actor, Props}
 import scala.concurrent.duration.Duration
 import scala.io.Source
+import java.util.Properties
+import collection.JavaConverters._
 
 object Args {
   @Parameter(names = Array("-f", "--roster-file"), description = "Path to the roster file", required = true)
@@ -64,6 +66,15 @@ object Args {
   var resendStalledEmail = false
 }
 
+// Extracting Parameter from Propery - as the mvn scala plugin does not support passing args to
+// script apparently
+var args = Seq[String]()
+val properties = System.getProperties().asScala
+for ( (k,v) <- properties )
+  if ( k.contains("roster.") )  {
+    args = args:+("--" + k.substring(k.indexOf('.') + 1 ,k.length))
+    args = args:+(v)
+  }
 new JCommander(Args, args.toArray: _*)
 // Main starts here
 if ( Args.resendStalledEmail && Args.staleEmailsDir != null && ! "".equals(Args.staleEmailsDir) ) {
