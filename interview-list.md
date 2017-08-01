@@ -1,5 +1,6 @@
 JBoss Community Interviews
 ====
+Playlist on Youtube: https://www.youtube.com/playlist?list=PLf3vm0UK6HKq5QNtHUo_F--f-168eYNlC
 
 * Sebastien Blanc (10:00) - added on 19/05/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/05/19/this-week-in-jboss-19-may-2017
 * Eric Schabell (8:14)
