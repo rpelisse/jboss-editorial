@@ -67,7 +67,7 @@ object Args {
 
 // Main program
 
-// Extracting Parameter from Propery - as the mvn scala plugin does not support passing args to
+// Extracting Parameter from Property - as the mvn scala plugin does not support passing args to
 // script apparently
 var args = Seq[String]()
 val properties = System.getProperties().asScala
