@@ -10,7 +10,7 @@ Playlist on Youtube: https://www.youtube.com/playlist?list=PLf3vm0UK6HKq5QNtHUo_
 * Clement Escoffier (5:11) - added on 16/06/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/06/16/this-week-in-jboss-16th-june-2017-the-power-of-asynchronicity
 * James Kirkland (11:15) - Posted to the developer blog, but it could still be used https://developers.redhat.com/blog/2017/05/31/brief-interview-with-james-kirkland-about-iot/
 * Dan Walsh (4:52)
-* Brian Leathem and Leslie Hinson (7:28)
+* Brian Leathem and Leslie Hinson (7:28) https://developer.jboss.org/blogs/weekly-editorial/2017/08/18/this-week-in-jboss-17th-august-2017
 * Ken Finnigan (4:30) - added on 13/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/13/this-week-in-jboss-13th-july-2017
 * Geoffrey De Smet (9:11) - added on 27/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/27/this-week-in-jboss-27th-july-2017-optaplanner-clustered-counters-containers-and-more
 * Thomas Qvarnstrom (6:39) - added on 20/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/20/this-week-in-jboss-20th-july-2017-bastille-day
