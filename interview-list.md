@@ -3,7 +3,7 @@ JBoss Community Interviews
 Playlist on Youtube: https://www.youtube.com/playlist?list=PLf3vm0UK6HKq5QNtHUo_F--f-168eYNlC
 
 * Sebastien Blanc (10:00) - added on 19/05/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/05/19/this-week-in-jboss-19-may-2017
-* Eric Schabell (8:14)
+* Eric Schabell (8:14) - added on 2017-09-08 https://developer.jboss.org/blogs/weekly-editorial/2017/09/08/this-week-in-jboss-08-sept-2017
 * Edson Yanaga (7:47)
 * Don Schenck (6:38)
 * Sanne Grinovero (6:40) - added on 01/06/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/06/01/the-week-in-jboss-june-1st-2017
