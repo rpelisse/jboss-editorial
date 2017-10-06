@@ -1,5 +1,6 @@
 JBoss Community Interviews
 ====
+
 Playlist on Youtube: https://www.youtube.com/playlist?list=PLf3vm0UK6HKq5QNtHUo_F--f-168eYNlC
 
 * Sebastien Blanc (10:00) - added on 19/05/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/05/19/this-week-in-jboss-19-may-2017
@@ -14,3 +15,9 @@ Playlist on Youtube: https://www.youtube.com/playlist?list=PLf3vm0UK6HKq5QNtHUo_
 * Ken Finnigan (4:30) - added on 13/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/13/this-week-in-jboss-13th-july-2017
 * Geoffrey De Smet (9:11) - added on 27/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/27/this-week-in-jboss-27th-july-2017-optaplanner-clustered-counters-containers-and-more
 * Thomas Qvarnstrom (6:39) - added on 20/07/2017 https://developer.jboss.org/blogs/weekly-editorial/2017/07/20/this-week-in-jboss-20th-july-2017-bastille-day
+
+
+Sources
+====
+* JBoss.org RSS feed - http://planet.jboss.org
+* Red Hat Developer Blog - https://developers.redhat.com/blog/
