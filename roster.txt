@@ -9,11 +9,11 @@ jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
 rpe = "Romain Pelisse" <rpelisse@redhat.com>
 
-# Week Roster 2016
-01 prn
+# Week Roster
+01 rpe
 02 kps
 03 kcr
-04 rpe
+04 prn
 05 jpr
 06 cmd
 07 kps
