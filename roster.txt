@@ -3,7 +3,7 @@
 # Who's who
 cmd = "Charles Moulliard" <cmoullia@redhat.com>
 kcr = "Kevin Conner" <kconner@redhat.com>
-kps = "Kenny Peeples" <kennethwpeeples@gmail.com>
+kps = "Kenny Peeples" <kpeeples@redhat.com>
 prn = "Paul Robinson" <probinso@redhat.com>
 jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
