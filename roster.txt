@@ -1,7 +1,6 @@
 # Please be careful with the formatting of the file ;)
 
 # Who's who
-cmd = "Charles Moulliard" <cmoullia@redhat.com>
 kcr = "Kevin Conner" <kconner@redhat.com>
 kps = "Kenny Peeples" <kpeeples@redhat.com>
 prn = "Paul Robinson" <probinso@redhat.com>
@@ -15,34 +14,34 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 03 kcr
 04 prn
 05 jpr
-06 cmd
+06 rpe
 07 kcr
 08 mle
 09 prn
 10 jpr
 11 rpe
-12 cmd
+12 kps
 13 kcr
 14 rpe
 15 mle
 16 prn
 17 jpr
 18 kcr
-19 cmd
+19 kps
 20 jpr
 21 mle
 22 prn
 23 rpe
 24 kcr
-25 cmd
+25 kps
 26 jpr
 27 mle
 28 prn
 29 rpe
 30 kcr
-31 rpe
+31 kps
 32 mle
-33 prn
+33 kps
 34 kcr
 35 mle
 36 jpr
@@ -50,7 +49,7 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 38 jpr
 39 rpe
 40 jpr
-41 rpe
+41 kps
 42 kcr
 43 prn
 44 rpe
