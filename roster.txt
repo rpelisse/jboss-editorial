@@ -30,11 +30,11 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 19 kps
 20 jpr
 21 mle
-22 prn
+22 jpr
 23 rpe
 24 kcr
 25 kps
-26 jpr
+26 prn
 27 mle
 28 prn
 29 rpe
