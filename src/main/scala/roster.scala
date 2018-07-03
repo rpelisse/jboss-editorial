@@ -203,7 +203,12 @@ def sendReminder(message:String) = {
   val entries = fileLines.collect { case entryRegex(weekNo, authorId) => (weekNo , authorId) }
 
   val weekNo = java.util.Calendar.getInstance().get(java.util.Calendar.WEEK_OF_YEAR)
-  val authorId = entries.filter( entry => entry._1.equals(String.format("%02d", Integer.valueOf(weekNo.toString)))).head._2
+  val authorsOfTheWeek = entries.filter( entry => entry._1.equals(String.format("%02d", Integer.valueOf(weekNo.toString))))
+  if ( authorsOfTheWeek.isEmpty ) {
+    println("No editorial this week.")
+    System.exit(0)
+  }
+  val authorId = authorsOfTheWeek.head._2
   val author = authors.filter ( author => author._1.equals(authorId) ).head._2
   println("Sending a reminder to:" + author + ", from "  + EDITORIAL_TEAM_MAIL + ", with message:\n" + message)
   sendEMail(EDITORIAL_TEAM_MAIL, author,  "JBoss Weekly Editorial Reminder", message)
