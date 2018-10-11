@@ -45,6 +45,6 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 42 kcr
 44 mle
 46 jpr
-48 kps
+48 rpe
 50 jpr
 52 prn
