@@ -56,7 +56,7 @@
     <dependency>
       <groupId>io.undertow</groupId>
       <artifactId>undertow-core</artifactId>
-      <version>1.4.12.Final</version>
+      <version>1.4.17.Final</version>
       <scope>compile</scope>
     </dependency>
 
