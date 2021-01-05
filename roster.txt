@@ -9,27 +9,27 @@ rpe = "Romain Pelisse" <rpelisse@redhat.com>
 dno = "Don Naro" <dnaro@redhat.com>
 
 # Week Roster
-02 rpe
-04 dno
-06 kcr
-08 prn
-10 jpr
-12 kcr
-14 dno
-16 rpe
-18 prn
-20 jpr
-22 mle
-24 dno
-26 jpr
-28 rpe
-31 rpe
-33 prn
-35 jpr
+01 rpe
+03 dno
+05 jpr
+07 jpr
+09 jpr
+11 kcr
+13 dno
+15 rpe
+17 prn
+19 jpr
+21 dno
+23 dno
+25 jpr
+27 rpe
+29 prn
+33 rpe
+35 kcr
 37 dno
 39 prn
 41 kcr
-43 prn
+43 jpr
 45 kcr
 47 rpe
 49 dno
