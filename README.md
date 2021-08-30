@@ -17,7 +17,7 @@ What needs to be done and how?
 * Put a reminder in your calendar so you don’t forget and double check at least check that the reminder automatically sent are indeed arriving in your inbox.
 2. How do I find the material for the content of the editorial?
 * Any news relevant to the JBoss community can be added into the editorial whatever the source (well, assuming the source is a valid source). However, most of the time, we use the following sources for the content of the editorial:
-    * [Planet J‌Boss](https://planet.jboss.org/)
+    * [Planet JBoss](https://planet.jboss.org/)
     * [Red Hat Developer Blog](https://developers.redhat.com/)
     * [Red Hat Middleware Blog](https://middlewareblog.redhat.com/) *(note that last entry as of 2020-06-30 was in January, so the source appears to have dryed out)*
 * Warning Note that some item of this feed are non-jboss content, so don't cut'n'paste everything without thinking !
