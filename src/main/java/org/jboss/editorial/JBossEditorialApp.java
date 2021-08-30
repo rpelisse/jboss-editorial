@@ -7,8 +7,6 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
-import io.quarkus.mailer.Mail;
-import io.quarkus.mailer.Mailer;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -19,13 +17,21 @@ public class JBossEditorialApp implements Runnable {
 
     @Option(names = {"-c", "--generate-ical-file"}, description = "Generate an ical file based on roster file") String iCalFile = null;
 
+    @Option(names = {"-t", "--test-email"}, description = "Checks that SMTP configuration is valid") boolean testEmail = false;
+
     private List<Author> authors;
     private List<Editorial> editorials;
+
+    @Inject
+    MailService mailService;
 
     @Override
     public void run() {
         try {
-            executeTask();
+            if ( ! testEmail )
+              executeTask();
+            else
+              mailService.send("rpelisse@redhat.com", "Test","This is a test");
         } catch ( IOException e ) {
           throw new IllegalArgumentException(e);
         }
@@ -55,10 +61,8 @@ public class JBossEditorialApp implements Runnable {
             default:
                 System.out.println("No reminders to be sent today.");
           }
-
     }
 
-    @Inject Mailer mailer;
     private void sendReminder(String message) {
 
         int weekNo = CalendarUtils.getCurrentWeekNo();
@@ -68,7 +72,7 @@ public class JBossEditorialApp implements Runnable {
             if ( authorsOfTheWeek.isEmpty() )
                 System.out.println("No editorial this week.");
             else {
-                mailer.send(Mail.withText(authors.stream().filter ( a -> a.equals(authorsOfTheWeek) ).findFirst().get().getName(), "JBoss Weekly Editorial Reminder", message));
+                mailService.send(authors.stream().filter ( a -> a.equals(authorsOfTheWeek) ).findFirst().get().getName(), "JBoss Weekly Editorial Reminder", message);
             }
         } else
             System.out.println("No JBoss Editorial this week (" + weekNo + ")");
