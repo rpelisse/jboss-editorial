@@ -83,37 +83,6 @@
           </systemPropertyVariables>
         </configuration>
       </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>rpm-maven-plugin</artifactId>
-        <version>2.2.0</version>
-        <executions>
-          <execution>
-            <id>generate-rpm</id>
-            <goals>
-              <goal>rpm</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <group>JBoss Editorial</group>
-          <packager>Romain Pelisse</packager>
-          <needarch>x86_64</needarch>
-          <mappings>
-            <mapping>
-              <directory>/usr/share/${project.build.finalName}</directory>
-              <filemode>0755</filemode>
-              <sources>
-                <source>
-                  <location>target/${project.build.finalName}-runner</location>
-                  <destination>${project.build.finalName}</destination>
-                  <targetArchitecture>x86_64</targetArchitecture>
-                </source>
-              </sources>
-            </mapping>
-          </mappings>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
   <profiles>
@@ -151,5 +120,48 @@
         <quarkus.package.type>native</quarkus.package.type>
       </properties>
     </profile>
+    <profile>
+      <id>rpm</id>
+      <activation>
+        <property>
+          <name>rpm</name>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>rpm-maven-plugin</artifactId>
+          <version>2.2.0</version>
+          <executions>
+            <execution>
+              <id>generate-rpm</id>
+              <goals>
+                <goal>rpm</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <group>JBoss Editorial</group>
+            <packager>Romain Pelisse</packager>
+            <needarch>x86_64</needarch>
+            <mappings>
+              <mapping>
+                <directory>/usr/share/${project.build.finalName}</directory>
+                <filemode>0755</filemode>
+                <sources>
+                  <source>
+                    <location>target/${project.build.finalName}-runner</location>
+                    <destination>${project.build.finalName}</destination>
+                    <targetArchitecture>x86_64</targetArchitecture>
+                  </source>
+                </sources>
+              </mapping>
+            </mappings>
+          </configuration>
+        </plugin>
+      </plugins>
+  </build>
+  </profile>
   </profiles>
 </project>
