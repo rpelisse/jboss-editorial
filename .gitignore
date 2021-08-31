@@ -3,4 +3,3 @@
 target/
 jboss-weekly-*.sh
 *.ics
-src/main/resources/application.properties
