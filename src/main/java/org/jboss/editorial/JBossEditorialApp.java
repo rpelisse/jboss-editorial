@@ -24,18 +24,7 @@ public class JBossEditorialApp implements Runnable {
 
 	@Override
 	public void run() {
-		urlToRoster = (rosterFile == URL_TO_ROSTER ? IOUtils.buildURL(rosterFile)
-				: IOUtils.buildURL("file://" + Path.of(rosterFile).toString()));
-
-		if ( ! testEmail)
-			executeTask();
-		else
-			mailService.test();
-
-	}
-    
-    private void executeTask() {
-        RosterLoader loader = new RosterLoader(urlToRoster);
+        RosterLoader loader = new RosterLoader(buildURLtoRoster());
         authors = loader.loadAuthorsFromRoster();
         editorials = loader.loadEditorialsFromRoster();
         if ( iCalFile != null ) {
@@ -44,6 +33,11 @@ public class JBossEditorialApp implements Runnable {
             sendReminderIfNeeded();
     }
 
+	public URL buildURLtoRoster() {
+		return rosterFile == URL_TO_ROSTER ? IOUtils.buildURL(rosterFile)
+				: IOUtils.buildURL("file://" + Path.of(rosterFile).toAbsolutePath().toString());
+	}
+	
     @SuppressWarnings("deprecation")
     private void sendReminderIfNeeded() {
          switch (java.util.Calendar.getInstance().getTime().getDay()) {
