@@ -43,11 +43,11 @@ public class JBossEditorialApp implements Runnable {
          switch (java.util.Calendar.getInstance().getTime().getDay()) {
             case 1:
                 System.out.println("It's Monday, let's send the first reminder.");
-                sendReminder("Hi,\n\nIt's Monday and, this week, you are in charge of the JBoss Weekly Editorial. Don't forget about it !");
+                sendReminder("Hi! It's Monday and, this week, you are in charge of the JBoss Weekly Editorial. Don't forget about it !");
                 break;
               case 4:
                 System.out.println("It's Tuesday, let's send the second reminder.");
-                sendReminder("Hi,\n\nFriendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.");
+                sendReminder("Hi! Friendly reminder, it's Thursday, you should publish the JBoss Weekly Editorial by the end of the day - otherwise notify the list.");
                 break;
             default:
                 System.out.println("No reminders to be sent today.");
