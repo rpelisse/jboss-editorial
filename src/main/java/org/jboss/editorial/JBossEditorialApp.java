@@ -38,7 +38,7 @@ public class JBossEditorialApp implements Runnable {
 		if ( ! testEmail)
 			executeTask();
 		else
-			mailService.send("rpelisse@redhat.com", "Test", "This is a test");
+			mailService.test();
 
 	}
     

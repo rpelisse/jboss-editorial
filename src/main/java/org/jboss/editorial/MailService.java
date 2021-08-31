@@ -18,4 +18,8 @@ public class MailService {
 	public void send(String to, String title, String message) {
 		mailer.send(Mail.withText(to, title, message));
 	}
+
+    public void test() {
+		this.send("rpelisse@redhat.com", "Test", "This is a test");
+    }
 }
