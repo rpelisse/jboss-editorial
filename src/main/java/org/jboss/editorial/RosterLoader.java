@@ -15,15 +15,18 @@ public class RosterLoader {
 
 	private URL rosterFile;
 
-    private static final String regexAuthors = "^([0-9][0-9]) ([a-z][a-z][a-z])";
-    private static final String regexEditorials = "^([0-9][0-9]) ([a-z][a-z][a-z])";
+    private static final String REGEX_AUTHORS = "^([a-z][a-z][a-z]) = (.*)$";
+    private static final String REGEX_EDITORIALS = "^([0-9][0-9]) ([a-z][a-z][a-z])";
+
+    private static final String AUTHOR_SEPARATOR = " = ";
+    private static final String EDITORIAL_SEPARATOR = " ";
 
 	public List<Author> loadAuthorsFromRoster() {
-		return this.loadInformationsFromRoster(regexAuthors, RosterLoader::authorFromLine);
+		return this.loadInformationsFromRoster(REGEX_AUTHORS, RosterLoader::authorFromLine);
 	}
 
 	public List<Editorial> loadEditorialsFromRoster() {
-		return this.loadInformationsFromRoster(regexEditorials, RosterLoader::editorialFromLine);
+		return this.loadInformationsFromRoster(REGEX_EDITORIALS, RosterLoader::editorialFromLine);
 	}
 	
 	private <T,R> List<T> loadInformationsFromRoster(String regex, Function<String, T> f) {
@@ -33,10 +36,10 @@ public class RosterLoader {
     }
 
 	private static Editorial editorialFromLine(String line) {
-		return new Editorial(line.split(" ")[1], Integer.valueOf(line.split(" ")[0]));
+		return new Editorial(line.split(EDITORIAL_SEPARATOR)[1], Integer.valueOf(line.split(EDITORIAL_SEPARATOR)[0]));
 	}
 
 	private static Author authorFromLine(String line) {
-		return new Author(line.split(" ")[1], line.split(" ")[0]);
+		return new Author(line.split(AUTHOR_SEPARATOR)[0], line.split(AUTHOR_SEPARATOR)[1]);
 	}
 }
