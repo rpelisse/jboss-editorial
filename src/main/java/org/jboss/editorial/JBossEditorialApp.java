@@ -1,6 +1,8 @@
 package org.jboss.editorial;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
@@ -13,32 +15,35 @@ import picocli.CommandLine.Option;
 @Command(name = "jboss-editorial-app", mixinStandardHelpOptions = true)
 public class JBossEditorialApp implements Runnable {
 
-    @Option(names = {"-f", "--roster-file"}, description = "Path to the roster file", required = true) String rosterFile;
+	private static final String URL_TO_ROSTER = "https://raw.githubusercontent.com/rpelisse/jboss-editorial/master/roster.txt";
+	
+    @Option(names = {"-f", "--roster-file"}, description = "Path to the roster file") String rosterFile = URL_TO_ROSTER;
 
     @Option(names = {"-c", "--generate-ical-file"}, description = "Generate an ical file based on roster file") String iCalFile = null;
 
     @Option(names = {"-t", "--test-email"}, description = "Checks that SMTP configuration is valid") boolean testEmail = false;
 
+    private URL urlToRoster;
     private List<Author> authors;
     private List<Editorial> editorials;
 
     @Inject
-    MailService mailService;
+	MailService mailService;
 
-    @Override
-    public void run() {
-        try {
-            if ( ! testEmail )
-              executeTask();
-            else
-              mailService.send("rpelisse@redhat.com", "Test","This is a test");
-        } catch ( IOException e ) {
-          throw new IllegalArgumentException(e);
-        }
-    }
+	@Override
+	public void run() {
+		urlToRoster = (rosterFile == URL_TO_ROSTER ? IOUtils.buildURL(rosterFile)
+				: IOUtils.buildURL("file://" + Path.of(rosterFile).toString()));
 
-    private void executeTask() throws IOException {
-        RosterLoader loader = new RosterLoader(Path.of(rosterFile));
+		if ( ! testEmail)
+			executeTask();
+		else
+			mailService.send("rpelisse@redhat.com", "Test", "This is a test");
+
+	}
+    
+    private void executeTask() {
+        RosterLoader loader = new RosterLoader(urlToRoster);
         authors = loader.loadAuthorsFromRoster();
         editorials = loader.loadEditorialsFromRoster();
         if ( iCalFile != null ) {
