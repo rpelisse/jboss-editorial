@@ -7,8 +7,6 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
-import javax.inject.Inject;
-
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 
@@ -21,14 +19,8 @@ public class JBossEditorialApp implements Runnable {
 
     @Option(names = {"-c", "--generate-ical-file"}, description = "Generate an ical file based on roster file") String iCalFile = null;
 
-    @Option(names = {"-t", "--test-email"}, description = "Checks that SMTP configuration is valid") boolean testEmail = false;
-
-    private URL urlToRoster;
     private List<Author> authors;
     private List<Editorial> editorials;
-
-    @Inject
-	MailService mailService;
 
 	@Override
 	public void run() {
@@ -77,9 +69,18 @@ public class JBossEditorialApp implements Runnable {
             if ( authorsOfTheWeek.isEmpty() )
                 System.out.println("No editorial this week.");
             else {
-                mailService.send(authors.stream().filter ( a -> a.equals(authorsOfTheWeek) ).findFirst().get().getName(), "JBoss Weekly Editorial Reminder", message);
+                this.printMailInfo(authors.stream().filter ( a -> a.getTrigram().equals(authorsOfTheWeek) ).findFirst().get().getName(), "JBoss Weekly Editorial Reminder", message);
             }
-        } else
+        } else {
             System.out.println("No JBoss Editorial this week (" + weekNo + ")");
+            System.exit(1);
+        }
     }
+
+	private void printMailInfo(String to, String title, String message) {
+		final String header = "MAIL> ";
+		System.out.println(header + to);
+		System.out.println(header + title);
+		System.out.println(header + message);
+	}
 }

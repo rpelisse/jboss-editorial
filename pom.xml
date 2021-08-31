@@ -43,10 +43,6 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-mailer</artifactId>
-    </dependency>
-    <dependency>
       <groupId>ical4j</groupId>
       <artifactId>ical4j</artifactId>
       <version>0.9.20</version>
