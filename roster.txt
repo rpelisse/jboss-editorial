@@ -27,11 +27,11 @@ dno = "Don Naro" <dnaro@redhat.com>
 32 rpe
 34 kcr
 36 dno
-38 prn
+38 rpe
 40 dno
 42 jpr
 44 dno
-46 rpe
+46 prn
 48 dno
 50 rpe
 52 mle
