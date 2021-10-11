@@ -1,7 +1,6 @@
 # Please be careful with the formatting of the file ;)
 
 # Who's who
-kcr = "Kevin Conner" <kconner@redhat.com>
 prn = "Paul Robinson" <probinso@redhat.com>
 jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
