@@ -1,6 +1,7 @@
 # Please be careful with the formatting of the file ;)
 
 # Who's who
+ssi = "Stefan Sitani" <ssitani@redhat.com>
 jvl = "Jonathan Vila Lopez" <jvilalop@redhat.com>
 psa = "Pedro Silva" <pesilva@redhat.com>
 jpr = "Jason Porter" <jporter@redhat.com>
