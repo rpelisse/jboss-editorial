@@ -1,6 +1,8 @@
 # Please be careful with the formatting of the file ;)
 
 # Who's who
+api = "Alex Porcelli" <abakos@redhat.com>
+fmi = "Francesco Marchioni" <fmarchio@redhat.com>
 ssi = "Stefan Sitani" <ssitani@redhat.com>
 jvl = "Jonathan Vila Lopez" <jvilalop@redhat.com>
 psa = "Pedro Silva" <pesilva@redhat.com>
