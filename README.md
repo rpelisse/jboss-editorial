@@ -1,16 +1,11 @@
 JBoss Editorial
 ====
 
-The following schedule is for committing yourself to the weekly editorial to be published online [JBoss.org](https://www.jboss.org/) by Thursday, noon CET .
+Schedule for the [This week in JBoss.org](https://www.jboss.org/) editorial, published every other Thursday.
 
-
-Who is doing which editorial when?
+Editorial contributor's guide
 ----
-
-The roster to answer that is living in this Github repository, as a simple text file: roster.txt. Also on the Github project, there is a scala script used to generate the calendar file and send reminders to the appropriate person each week. If one needs to change the roster, just follow the usual git process (fork, change, push and make a PR).
-
-What needs to be done and how?
-----
+Contributors to the JBoss editorials are added to the roster, which then assigns each editor publishing dates for the calendar year.
 
 1. We publish Thursday every two weeks around 7PM (GMT+1). Early on Thursday is fine and Friday is also fine.
 * If something arises and you can't deliver your editorial, please try to trade with someone else on the team and update the roster to reflect this change.
@@ -21,23 +16,26 @@ What needs to be done and how?
     * [Red Hat Developer Blog](https://developers.redhat.com/)
     * [Red Hat Middleware Blog](https://middlewareblog.redhat.com/) *(note that last entry as of 2020-06-30 was in January, so the source appears to have dryed out)*
 * Warning Note that some item of this feed are non-jboss content, so don't cut'n'paste everything without thinking !
+* You can also use the feeds for JBoss.org as a good source: https://github.com/jbossorg/jbossorg.github.io/blob/src/src/data/aggregator-feeds.yaml
 3. Communication with the editorial team : Subscribe to the jboss-editorial-team@redhat.com, this is the team list.
 
-How to publish your editorial
+Publishing your editorials
 ----
 
 Here is the workflow for posting editorials to JBoss.org using Github:
 
 * Create a new asciidoc file with the editorial content at [jbossorg/jbossorg.github.io](https://github.com/jbossorg/jbossorg.github.io/tree/src/src/content/posts)
-* Commit directly to the **src** branch.
-* From there the editorial automatically gets picked up and posted to the site.
+* Commit to the **src** branch.
+* Send a heads up for review to jboss-editorial-team@redhat.com
+
+On merge the asciidoc is generated into html and posted to the site.
 
 Note that you can also update [your profile photo](https://github.com/jbossorg/jbossorg.github.io/tree/src/src/img/people).
 
-Structure of the Editorial
+Editorial layout guidelines
 ====
 
-As a prime directive: this is your editorial, feel free to write any way you want. Just follow the few guidelines here:
+As a prime directive: it is your editorial, feel free to write any way you want. Just follow the few guidelines here:
 
 * Title should always be **This week in JBoss ([date-for-thursday-that-week]) - [some-title-you-come-up-with]**.
     * Just copy someones existing title and adjust for your article that week ;)
