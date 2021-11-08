@@ -34,7 +34,7 @@ dno = "Don Naro" <dnaro@redhat.com>
 40 dno
 42 jpr
 44 dno
-46 prn
-48 dno
+46 api
+48 ssi
 50 rpe
 52 mle
