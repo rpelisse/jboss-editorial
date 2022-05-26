@@ -1,10 +1,8 @@
 # Please be careful with the formatting of the file ;)
 
 # Who's who
-api = "Alex Porcelli" <abakos@redhat.com>
 fmi = "Francesco Marchioni" <fmarchio@redhat.com>
 ssi = "Stefan Sitani" <ssitani@redhat.com>
-jvl = "Jonathan Vila Lopez" <jvilalop@redhat.com>
 psa = "Pedro Silva" <pesilva@redhat.com>
 jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
@@ -24,17 +22,17 @@ dno = "Don Naro" <dnaro@redhat.com>
 20 jvl
 22 psa
 24 jpr
-26 api
+26 ssi
 28 fmi
-30 ssi
-32 jvl
+30 rpe
+32 dno
 34 psa
 36 jpr
 38 rpe
 40 dno
-42 api
+42 jpr
 44 fmi
 46 ssi
-48 jvl
+48 rpe
 50 psa
 52 mle
