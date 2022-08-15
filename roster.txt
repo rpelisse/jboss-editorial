@@ -11,15 +11,15 @@ dno = "Don Naro" <dnaro@redhat.com>
 
 # Week Roster
 02 ssi
-04 jvl
+04 rpe
 06 psa
 08 jpr
-10 api
+10 rpe
 12 fmi
 14 dno
 16 rpe
 18 ssi
-20 jvl
+20 rpe
 22 psa
 24 jpr
 26 ssi

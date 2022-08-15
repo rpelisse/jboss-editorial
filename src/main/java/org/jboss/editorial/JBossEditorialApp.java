@@ -14,7 +14,7 @@ import picocli.CommandLine.Option;
 public class JBossEditorialApp implements Runnable {
 
 	private static final String URL_TO_ROSTER = "https://raw.githubusercontent.com/rpelisse/jboss-editorial/master/roster.txt";
-	
+
     @Option(names = {"-f", "--roster-file"}, description = "Path to the roster file") String rosterFile = URL_TO_ROSTER;
 
     @Option(names = {"-c", "--generate-ical-file"}, description = "Generate an ical file based on roster file") String iCalFile = null;
@@ -37,7 +37,7 @@ public class JBossEditorialApp implements Runnable {
 		return rosterFile == URL_TO_ROSTER ? IOUtils.buildURL(rosterFile)
 				: IOUtils.buildURL("file://" + Path.of(rosterFile).toAbsolutePath().toString());
 	}
-	
+
     @SuppressWarnings("deprecation")
     private void sendReminderIfNeeded() {
          switch (java.util.Calendar.getInstance().getTime().getDay()) {
