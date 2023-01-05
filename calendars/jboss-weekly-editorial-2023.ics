@@ -1,0 +1,369 @@
+BEGIN:VCALENDAR
+PRODID:-//JBoss Editorial Calendar//iCal4j 1.0//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230109
+SUMMARY:JBoss Weekly Editorial - Week 2 (early week reminder) - "Stefan S
+ itani" <ssitani@redhat.com>
+UID:2.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230112
+SUMMARY:JBoss Weekly Editorial - Week 2 (release date)"Stefan Sitani" <ss
+ itani@redhat.com>
+UID:2.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230123
+SUMMARY:JBoss Weekly Editorial - Week 4 (early week reminder) - "Don Naro
+ " <dnaro@redhat.com>
+UID:4.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230126
+SUMMARY:JBoss Weekly Editorial - Week 4 (release date)"Don Naro" <dnaro@r
+ edhat.com>
+UID:4.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230206
+SUMMARY:JBoss Weekly Editorial - Week 6 (early week reminder) - "Pedro Si
+ lva" <pesilva@redhat.com>
+UID:6.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230209
+SUMMARY:JBoss Weekly Editorial - Week 6 (release date)"Pedro Silva" <pesi
+ lva@redhat.com>
+UID:6.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230220
+SUMMARY:JBoss Weekly Editorial - Week 8 (early week reminder) - "Jason Po
+ rter" <jporter@redhat.com>
+UID:8.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230223
+SUMMARY:JBoss Weekly Editorial - Week 8 (release date)"Jason Porter" <jpo
+ rter@redhat.com>
+UID:8.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230306
+SUMMARY:JBoss Weekly Editorial - Week 10 (early week reminder) - "Romain 
+ Pelisse" <rpelisse@redhat.com>
+UID:10.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230309
+SUMMARY:JBoss Weekly Editorial - Week 10 (release date)"Romain Pelisse" <
+ rpelisse@redhat.com>
+UID:10.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230320
+SUMMARY:JBoss Weekly Editorial - Week 12 (early week reminder) - "Frances
+ co Marchioni" <fmarchio@redhat.com>
+UID:12.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230323
+SUMMARY:JBoss Weekly Editorial - Week 12 (release date)"Francesco Marchio
+ ni" <fmarchio@redhat.com>
+UID:12.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230403
+SUMMARY:JBoss Weekly Editorial - Week 14 (early week reminder) - "Don Nar
+ o" <dnaro@redhat.com>
+UID:14.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230406
+SUMMARY:JBoss Weekly Editorial - Week 14 (release date)"Don Naro" <dnaro@
+ redhat.com>
+UID:14.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230417
+SUMMARY:JBoss Weekly Editorial - Week 16 (early week reminder) - "Pedro S
+ ilva" <pesilva@redhat.com>
+UID:16.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230420
+SUMMARY:JBoss Weekly Editorial - Week 16 (release date)"Pedro Silva" <pes
+ ilva@redhat.com>
+UID:16.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230501
+SUMMARY:JBoss Weekly Editorial - Week 18 (early week reminder) - "Stefan 
+ Sitani" <ssitani@redhat.com>
+UID:18.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230504
+SUMMARY:JBoss Weekly Editorial - Week 18 (release date)"Stefan Sitani" <s
+ sitani@redhat.com>
+UID:18.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230515
+SUMMARY:JBoss Weekly Editorial - Week 20 (early week reminder) - "Frances
+ co Marchioni" <fmarchio@redhat.com>
+UID:20.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230518
+SUMMARY:JBoss Weekly Editorial - Week 20 (release date)"Francesco Marchio
+ ni" <fmarchio@redhat.com>
+UID:20.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230529
+SUMMARY:JBoss Weekly Editorial - Week 22 (early week reminder) - "Pedro S
+ ilva" <pesilva@redhat.com>
+UID:22.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230601
+SUMMARY:JBoss Weekly Editorial - Week 22 (release date)"Pedro Silva" <pes
+ ilva@redhat.com>
+UID:22.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230612
+SUMMARY:JBoss Weekly Editorial - Week 24 (early week reminder) - "Jason P
+ orter" <jporter@redhat.com>
+UID:24.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230615
+SUMMARY:JBoss Weekly Editorial - Week 24 (release date)"Jason Porter" <jp
+ orter@redhat.com>
+UID:24.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230626
+SUMMARY:JBoss Weekly Editorial - Week 26 (early week reminder) - "Stefan 
+ Sitani" <ssitani@redhat.com>
+UID:26.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230629
+SUMMARY:JBoss Weekly Editorial - Week 26 (release date)"Stefan Sitani" <s
+ sitani@redhat.com>
+UID:26.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230710
+SUMMARY:JBoss Weekly Editorial - Week 28 (early week reminder) - "Frances
+ co Marchioni" <fmarchio@redhat.com>
+UID:28.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230713
+SUMMARY:JBoss Weekly Editorial - Week 28 (release date)"Francesco Marchio
+ ni" <fmarchio@redhat.com>
+UID:28.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230724
+SUMMARY:JBoss Weekly Editorial - Week 30 (early week reminder) - "Stefan 
+ Sitani" <ssitani@redhat.com>
+UID:30.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230727
+SUMMARY:JBoss Weekly Editorial - Week 30 (release date)"Stefan Sitani" <s
+ sitani@redhat.com>
+UID:30.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230807
+SUMMARY:JBoss Weekly Editorial - Week 32 (early week reminder) - "Don Nar
+ o" <dnaro@redhat.com>
+UID:32.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230810
+SUMMARY:JBoss Weekly Editorial - Week 32 (release date)"Don Naro" <dnaro@
+ redhat.com>
+UID:32.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230821
+SUMMARY:JBoss Weekly Editorial - Week 34 (early week reminder) - "Pedro S
+ ilva" <pesilva@redhat.com>
+UID:34.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230824
+SUMMARY:JBoss Weekly Editorial - Week 34 (release date)"Pedro Silva" <pes
+ ilva@redhat.com>
+UID:34.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230904
+SUMMARY:JBoss Weekly Editorial - Week 36 (early week reminder) - "Jason P
+ orter" <jporter@redhat.com>
+UID:36.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230907
+SUMMARY:JBoss Weekly Editorial - Week 36 (release date)"Jason Porter" <jp
+ orter@redhat.com>
+UID:36.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230918
+SUMMARY:JBoss Weekly Editorial - Week 38 (early week reminder) - "Romain 
+ Pelisse" <rpelisse@redhat.com>
+UID:38.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20230921
+SUMMARY:JBoss Weekly Editorial - Week 38 (release date)"Romain Pelisse" <
+ rpelisse@redhat.com>
+UID:38.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231002
+SUMMARY:JBoss Weekly Editorial - Week 40 (early week reminder) - "Don Nar
+ o" <dnaro@redhat.com>
+UID:40.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231005
+SUMMARY:JBoss Weekly Editorial - Week 40 (release date)"Don Naro" <dnaro@
+ redhat.com>
+UID:40.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231016
+SUMMARY:JBoss Weekly Editorial - Week 42 (early week reminder) - "Jason P
+ orter" <jporter@redhat.com>
+UID:42.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231019
+SUMMARY:JBoss Weekly Editorial - Week 42 (release date)"Jason Porter" <jp
+ orter@redhat.com>
+UID:42.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231030
+SUMMARY:JBoss Weekly Editorial - Week 44 (early week reminder) - "Frances
+ co Marchioni" <fmarchio@redhat.com>
+UID:44.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231102
+SUMMARY:JBoss Weekly Editorial - Week 44 (release date)"Francesco Marchio
+ ni" <fmarchio@redhat.com>
+UID:44.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231113
+SUMMARY:JBoss Weekly Editorial - Week 46 (early week reminder) - "Stefan 
+ Sitani" <ssitani@redhat.com>
+UID:46.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231116
+SUMMARY:JBoss Weekly Editorial - Week 46 (release date)"Stefan Sitani" <s
+ sitani@redhat.com>
+UID:46.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231127
+SUMMARY:JBoss Weekly Editorial - Week 48 (early week reminder) - "Romain 
+ Pelisse" <rpelisse@redhat.com>
+UID:48.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231130
+SUMMARY:JBoss Weekly Editorial - Week 48 (release date)"Romain Pelisse" <
+ rpelisse@redhat.com>
+UID:48.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231211
+SUMMARY:JBoss Weekly Editorial - Week 50 (early week reminder) - "Pedro S
+ ilva" <pesilva@redhat.com>
+UID:50.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231214
+SUMMARY:JBoss Weekly Editorial - Week 50 (release date)"Pedro Silva" <pes
+ ilva@redhat.com>
+UID:50.5
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231225
+SUMMARY:JBoss Weekly Editorial - Week 52 (early week reminder) - "Romain 
+ Pelisse" <rpelisse@redhat.com>
+UID:52.2
+END:VEVENT
+BEGIN:VEVENT
+DTSTAMP:20230105T100726Z
+DTSTART;VALUE=DATE:20231228
+SUMMARY:JBoss Weekly Editorial - Week 52 (release date)"Romain Pelisse" <
+ rpelisse@redhat.com>
+UID:52.5
+END:VEVENT
+END:VCALENDAR
