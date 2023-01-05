@@ -2,4 +2,3 @@
 .project
 target/
 jboss-weekly-*.sh
-*.ics
