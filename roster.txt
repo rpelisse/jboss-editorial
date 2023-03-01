@@ -4,7 +4,6 @@
 fmi = "Francesco Marchioni" <fmarchio@redhat.com>
 ssi = "Stefan Sitani" <ssitani@redhat.com>
 psa = "Pedro Silva" <pesilva@redhat.com>
-jpr = "Jason Porter" <jporter@redhat.com>
 mle = "Mark Little" <mlittle@redhat.com>
 rpe = "Romain Pelisse" <rpelisse@redhat.com>
 dno = "Don Naro" <dnaro@redhat.com>
@@ -20,17 +19,17 @@ dno = "Don Naro" <dnaro@redhat.com>
 16 psa
 18 ssi
 20 fmi
-22 psa
-24 jpr
+22 rpe
+24 dno
 26 ssi
 28 fmi
 30 ssi
 32 dno
 34 psa
-36 jpr
+36 fmi
 38 rpe
 40 dno
-42 jpr
+42 psa
 44 fmi
 46 ssi
 48 rpe
